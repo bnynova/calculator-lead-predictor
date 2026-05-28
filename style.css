@@ -419,7 +419,7 @@ input[type="range"] {
   appearance: none;
   height: 14px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(233, 240, 251, 0.86), rgba(110, 125, 149, 0.82));
+  background: red;
   outline: none;
   border: 1px solid rgba(175, 190, 214, 0.14);
 }
