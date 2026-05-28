@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead Predictor Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18l-7 8v4l-4 2v-6L3 6z"></path>
+          </svg>
+        </div>
+        <div>
+          <h1>LeadPredictor</h1>
+          <p>Responsive campaign forecasting dashboard</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <aside class="panel sidebar">
+        <div class="field-group">
+          <label for="language">Language</label>
+          <select id="language">
+            <option value="en" selected>English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="currency">Currency</label>
+          <select id="currency">
+            <option value="USD" selected>US Dollar</option>
+            <option value="EUR">Euro</option>
+            <option value="GBP">British Pound</option>
+            <option value="CAD">Canadian Dollar</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="campaignStart">Campaign Start</label>
+          <input id="campaignStart" type="date" value="2026-05-08" />
+        </div>
+
+        <div class="field-group">
+          <label for="campaignEnd">Campaign End</label>
+          <input id="campaignEnd" type="date" value="2026-11-04" />
+        </div>
+
+        <div class="field-group">
+          <label for="totalRevenue">Total Revenue</label>
+          <div class="input-prefix">
+            <span id="currencySymbolTop">$</span>
+            <input id="totalRevenue" type="number" min="0" step="1" value="10000" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="avgOrderValue">Average Order Value</label>
+          <div class="input-prefix">
+            <span id="currencySymbolBottom">$</span>
+            <input id="avgOrderValue" type="number" min="1" step="1" value="1000" />
+          </div>
+        </div>
+      </aside>
+
+      <section class="panel content">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h2>Monthly Growth</h2>
+              <p>Projected campaign volume across the selected date range</p>
+            </div>
+            <div class="chart-meta" id="chartMeta">6 months</div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-ticks" id="chartTicks" aria-hidden="true"></div>
+            <div class="chart-body" id="chartBody" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <article class="result-card">
+            <div class="result-card__head">
+                <span class="icon badge prospects" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+                  </svg>
+                </span>
+              <div>
+                <h3>Prospects</h3>
+                <p class="result-percent" id="prospectsPercent">100%</p>
+              </div>
+            </div>
+            <div class="result-value" id="prospectsValue">125</div>
+            <div class="progress-track"><div class="progress-fill" id="prospectsFill"></div></div>
+          </article>
+
+          <article class="result-card">
+            <div class="result-card__head">
+                <span class="icon badge leads" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </span>
+              <div>
+                <h3>Leads</h3>
+                <p class="result-percent" id="leadsPercent">20%</p>
+              </div>
+            </div>
+            <div class="result-value" id="leadsValue">25</div>
+            <div class="progress-track"><div class="progress-fill" id="leadsFill"></div></div>
+          </article>
+
+          <article class="result-card">
+            <div class="result-card__head">
+                <span class="icon badge customers" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l3 7h7l-5.5 4.1L18.5 20 12 15.9 5.5 20l2-6.9L2 9h7l3-7z" />
+                  </svg>
+                </span>
+              <div>
+                <h3>Customers</h3>
+                <p class="result-percent" id="customersPercent">8%</p>
+              </div>
+            </div>
+            <div class="result-value" id="customersValue">10</div>
+            <div class="progress-track"><div class="progress-fill" id="customersFill"></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel controls">
+        <div class="slider-row">
+          <div class="slider-head">
+            <label for="leadResponseRate">Lead Response Rate</label>
+            <span id="leadResponseValue">40%</span>
+          </div>
+          <input id="leadResponseRate" type="range" min="1" max="100" value="40" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-head">
+            <label for="prospectResponseRate">Prospect Response Rate</label>
+            <span id="prospectResponseValue">20%</span>
+          </div>
+          <input id="prospectResponseRate" type="range" min="1" max="100" value="20" />
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
