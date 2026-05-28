@@ -523,3 +523,29 @@ input[type="range"]::-moz-range-thumb {
     font-size: 0.68rem;
   }
 }
+
+/* Footer styles */
+.app-footer {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(18,24,36,0.9), rgba(12,18,28,0.95));
+  border: 1px solid rgba(150,170,200,0.06);
+}
+.app-footer .footer-inner {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-footer .footer-left strong {
+  display: block;
+  font-size: 1rem;
+}
+.app-footer a { color: var(--accent-3); text-decoration: none; font-weight: 600; }
+.app-footer .muted { color: var(--muted); font-size: 0.92rem; }
+
+@media (max-width: 740px) {
+  .app-footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .app-footer .footer-right { text-align: left; }
+}
