@@ -33,7 +33,7 @@ body {
   background:
     radial-gradient(circle at top left, rgba(120, 149, 194, 0.18), transparent 28%),
     radial-gradient(circle at bottom right, rgba(73, 94, 123, 0.18), transparent 30%),
-    linear-gradient(180deg, #0d1320 0%, #111a2a 100%);
+    linear-gradient(180deg, #5576be 0%, #103b84 100%);
 }
 
 body::before {
